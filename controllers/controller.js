@@ -11,10 +11,14 @@ router.get("/", (req,res) => {
     res.render("index", {exercises: exercises});
 });
 
-router.post("/api/workout", (req, res) => {
+router.get("/addexercise", (req, res) => {
+    res.render("addexercise");
+})
+
+router.post("/api/exercise", (req, res) => {
     // TODO Swap to Mongoose save
     exercises.push(req.body);
-    res.json(req.body);
+    res.redirect("/")
 });
 
 
