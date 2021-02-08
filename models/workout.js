@@ -2,7 +2,9 @@ const workouts = [
     {
         id: 1,
         name: "Leg day",
-        exercies: [
+        complete: false,
+        date: "2021/2/7",
+        exercises: [
             {
                 id: 1,
                 name: "squats",
@@ -23,3 +25,5 @@ const workouts = [
         ]
     }
 ]
+
+module.exports = workouts;

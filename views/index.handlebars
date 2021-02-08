@@ -1,5 +1,25 @@
 <h1>Hello!</h1>
 
+<h2>Workouts</h2>
+{{#each workouts}}
+    name: {{name}}<br>
+    date: {{date}}<br>
+    complete: {{complete}}<br>
+    exercises:
+    {{#each exercises}}
+        name: {{name}}<br>
+        type: {{type}}<br>
+        weight: {{weight}}<br>
+        sets: {{sets}}<br>
+        reps: {{reps}}<br>
+        duration: {{duration}}<br>
+    {{/each}}
+    <hr>
+{{/each}}
+
+
+
+<h2>Exercises</h2>
 {{#each exercises}}
     name: {{name}}<br>
     type: {{type}}<br>

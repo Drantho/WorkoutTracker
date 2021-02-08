@@ -1,14 +1,13 @@
-// const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
-const exercises = require("../models/exercise")
-
-require('dotenv').config()
-
+const exercises = require("../models/exercise");
+const workouts = require("../models/workout");
 
 router.get("/", (req,res) => {
-    console.log(exercises);
-    res.render("index", {exercises: exercises});
+    res.render("index", {
+        exercises: exercises,
+        workouts: workouts
+    });
 });
 
 router.get("/addexercise", (req, res) => {
@@ -22,7 +21,21 @@ router.get("/addworkout", (req, res) => {
     })
 
     res.render("addworkout", {exercises: exercises});
-})
+});
+
+router.post("/api/workout", (req, res) => {
+    const workout = req.body;
+    workout.date = new Date();
+    workout.id = workouts.length +1;
+    workout.exercises = workout.exercises.map(exercise => {
+        const obj = JSON.parse(exercise)
+        obj.complete = false;
+        return obj;
+    });
+    workout.complete = false;
+    workouts.push(workout);
+    res.redirect("/");
+});
 
 router.post("/api/exercise", (req, res) => {
     // TODO Swap to Mongoose save
@@ -32,7 +45,23 @@ router.post("/api/exercise", (req, res) => {
     res.redirect("/")
 });
 
+router.put("/api/exercise/:id", (req, res) => {
+    //TODO MONGOOSE Stuff
 
+    res.redirect("/");
+});
+
+router.put("/api/workout/:id", (req, res) => {
+    //TODO MONGOOSE STUFF
+
+    res.redirect("/");
+});
+
+router.put("/api/setcomplete/workout/:workoutid/exercise/:exerciseid", (req, res) => {
+    //TODO MONGOOSE STUFF
+
+    res.redirect("/")
+});
 
 function ensureAuthenticated(req, res, next) {
 

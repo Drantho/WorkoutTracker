@@ -1,5 +1,10 @@
-<form action="/api/addworkout" method="post">
+<form action="/api/workout" method="post">
 
+    <p>
+        <label for="name">Name</label>
+        <input type="text" name="name">
+    </p>
+    
     <table border="1">
         <thead>
             <tr>
@@ -16,7 +21,7 @@
             {{#each exercises}}
             <tr>
                 <td>
-                    <input type="checkbox" id={{id}} name={{name}} value={{string}}>
+                    <input type="checkbox" id={{id}} name="exercises" value={{string}}>
                 </td>
                 <td>{{name}}</td>
                 <td>{{type}}</td>
@@ -28,5 +33,5 @@
             {{/each}}
         </tbody>
     </table>
-
+    <button type="submit">Add Workout</button>
 </form>
