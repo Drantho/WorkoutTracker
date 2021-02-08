@@ -1,0 +1,32 @@
+<form action="/api/addworkout" method="post">
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th></th>
+                <th>name</th>
+                <th>type</th>
+                <th>weight</th>
+                <th>sets</th>
+                <th>reps</th>
+                <th>duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each exercises}}
+            <tr>
+                <td>
+                    <input type="checkbox" id={{id}} name={{name}} value={{string}}>
+                </td>
+                <td>{{name}}</td>
+                <td>{{type}}</td>
+                <td>{{weight}}</td>
+                <td>{{sets}}</td>
+                <td>{{reps}}</td>
+                <td>{{duration}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</form>
