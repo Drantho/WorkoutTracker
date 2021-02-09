@@ -38,21 +38,28 @@ router.post("/api/exercise", (req, res) => {
 });
 
 router.put("/api/exercise/:id", (req, res) => {
-    //TODO MONGOOSE Stuff
-
-    res.redirect("/");
+    db.Exercise.updateOne({_id: req.params.id}, req.body).then(data => {
+        res.redirect("/");
+    })    
 });
 
 router.put("/api/workout/:id", (req, res) => {
-    //TODO MONGOOSE STUFF
-
-    res.redirect("/");
+    db.Workout.updateOne({_id: req.params.id}, req.body).then(data => {
+        res.redirect("/");
+    })    
 });
 
-router.put("/api/setcomplete/workout/:workoutid/exercise/:exerciseid", (req, res) => {
-    //TODO MONGOOSE STUFF
+router.put("/api/setcomplete/workout/:workoutid", (req, res) => {
+    db.Workout.updateOne({_id: req.params.id}, {complete: true}).then(data => {
+        res.redirect("/");
+    }) 
+});
 
-    res.redirect("/")
+
+router.put("/api/setincomplete/workout/:workoutid", (req, res) => {
+    db.Workout.updateOne({_id: req.params.id}, {complete: true}).then(data => {
+        res.redirect("/");
+    }) 
 });
 
 module.exports = router;
