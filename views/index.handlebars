@@ -1,23 +1,45 @@
-<h1>Hello!</h1>
-
-
 <h2>Workouts</h2>
 {{#each workouts}}
-    <h3>
-        <a href="/workout/{{_id}}">{{name}}</a>
-    </h3>
-    date: {{date}}<br>
-    complete: {{complete}}<br>
-    exercises:
+<h3>
+    <a href="/workout/{{_id}}">{{name}}</a>
+</h3>
+<p>
+    <strong>date: </strong>{{date}}
+</p>
+<p>
+    <strong>complete: </strong>{{complete}}
+</p>
+<p>
+    <strong>exercises: </strong>
+</p>
+<ul>
     {{#each exercises}}
-        name: {{name}}<br>
-        type: {{type}}<br>
-        weight: {{weight}}<br>
-        sets: {{sets}}<br>
-        reps: {{reps}}<br>
-        duration: {{duration}}<br>
+    <li>
+        <p>
+            <strong>{{name}}</strong>
+        </p>
+        <p>
+            <strong>type: </strong>{{type}}
+        </p>
+        <p>
+            <strong>weight: </strong>{{weight}}
+        </p>
+        <p>
+            <strong> sets: </strong>{{sets}}
+        </p>
+        <p>
+            <strong>reps: </strong>{{reps}}
+        </p>
+        <p>
+            <strong>duration: </strong>{{duration}}
+        </p>
+        <p>
+            <strong>distance: </strong>{{distance}}
+        </p>
+    </li>
     {{/each}}
-    <hr>
+</ul>
+<hr>
 {{/each}}
 
 
@@ -26,24 +48,28 @@
 <hr>
 
 {{#each exercises}}
+<h3>
     <a href="/exercise/{{_id}}">
-        <h3>{{name}}</h3>
+        {{name}}
     </a>
-    <p>
-        <strong>type: </strong>{{type}}
-    </p>
-    <p>        
-        <strong>weight: </strong>{{weight}}
-    </p>    
-    <p>        
-        <strong>sets: </strong>{{sets}}
-    </p>    
-    <p>        
-        <strong>reps: </strong>{{reps}}
-    </p>    
-    <p>        
-        <strong>duration: </strong>{{duration}}
-    </p>
-    <hr>
+</h3>
+<p>
+    <strong>type: </strong>{{type}}
+</p>
+<p>
+    <strong>weight: </strong>{{weight}}
+</p>
+<p>
+    <strong>sets: </strong>{{sets}}
+</p>
+<p>
+    <strong>reps: </strong>{{reps}}
+</p>
+<p>
+    <strong>duration: </strong>{{duration}}
+</p>
+<p>
+    <strong>distance: </strong>{{distance}}
+</p>
+<hr>
 {{/each}}
-
