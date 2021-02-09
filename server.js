@@ -23,7 +23,7 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const routes = require("./controllers/controller.js");
 

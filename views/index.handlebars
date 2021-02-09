@@ -3,7 +3,9 @@
 
 <h2>Workouts</h2>
 {{#each workouts}}
-    name: {{name}}<br>
+    <h3>
+        <a href="/workout/{{_id}}">{{name}}</a>
+    </h3>
     date: {{date}}<br>
     complete: {{complete}}<br>
     exercises:
@@ -24,7 +26,9 @@
 <hr>
 
 {{#each exercises}}
-    <h3>{{name}}</h3>
+    <a href="/exercise/{{_id}}">
+        <h3>{{name}}</h3>
+    </a>
     <p>
         <strong>type: </strong>{{type}}
     </p>
