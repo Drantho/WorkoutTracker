@@ -14,17 +14,16 @@ const exphbs = require("express-handlebars");
 require('dotenv').config()
 
 app.engine("handlebars", exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+      "json": function (context) {
+        return JSON.stringify(context, null, 4);
+      }
+    }
 }));
 app.set("view engine", "handlebars");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true
-});
-
-
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 const routes = require("./controllers/controller.js");
 

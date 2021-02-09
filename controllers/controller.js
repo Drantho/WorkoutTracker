@@ -4,8 +4,13 @@ const router = express.Router();
 const db = require("../models")
 
 router.get("/", (req,res) => {
-    db.exercises.find({}).then(date => {
-
+    db.Exercise.find({}).lean().then(exercises => {
+        db.Workout.find({}).populate("exercises").lean().then(workouts => {
+            res.render("index", {
+                exercises: exercises,
+                workouts: workouts
+            })            
+        })        
     })
 });
 
@@ -13,20 +18,23 @@ router.get("/addexercise", (req, res) => {
     res.render("addexercise");
 });
 
-router.get("/addworkout", (req, res) => {
-    
-
-    res.render("addworkout");
+router.get("/addworkout", (req, res) => {        
+    db.Exercise.find({}).lean().then(data => {
+        res.render("addworkout", {exercises: data});
+    })
 });
 
 router.post("/api/workout", (req, res) => {
-    
-    res.redirect("/");
+    console.log(req.body);
+    db.Workout.create(req.body).then(data => {
+        res.redirect("/");
+    })    
 });
 
 router.post("/api/exercise", (req, res) => {
-    
-    res.redirect("/")
+    db.Exercise.create(req.body).then(data => {
+        res.redirect("/")
+    })    
 });
 
 router.put("/api/exercise/:id", (req, res) => {

@@ -4,7 +4,7 @@
         <label for="name">Name</label>
         <input type="text" name="name">
     </p>
-    
+
     <table border="1">
         <thead>
             <tr>
@@ -21,7 +21,7 @@
             {{#each exercises}}
             <tr>
                 <td>
-                    <input type="checkbox" id={{id}} name="exercises" value={{string}}>
+                    <input type="checkbox" name="exercises" value={{_id}}>
                 </td>
                 <td>{{name}}</td>
                 <td>{{type}}</td>
