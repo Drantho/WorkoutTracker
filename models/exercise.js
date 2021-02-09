@@ -1,21 +1,16 @@
-const exercises = [
-    {
-        id: 1,
-        name: "squats", 
-        type: "leg", 
-        weight: 200,
-        sets: 3, 
-        reps: 5,
-        duration: undefined
-    },{
-        id: 2,
-        name: "lunges",
-        type: "leg",
-        weight: 20,
-        sets: 3,
-        reps: 5,
-        duration: undefined
-    }
-]
+const mongoose = require("mongoose");
 
-module.exports = exercises;
+const Schema = mongoose.Schema();
+
+const ExerciseSchema = new Schema({
+    name: String,
+    type: String,
+    weight: Number,
+    sets: Number,
+    reps: Number,
+    duration: Number
+});
+
+const Exercise = mongoose.model("Exercise", ExerciseSchema)
+
+module.exports = Exercise;

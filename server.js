@@ -1,9 +1,7 @@
-var express = require("express");
-const session = require("express-session");
+const express = require("express");
+const mongoose = require("mongoose");
 
-// var db = require("./models");
-
-var app = express();
+const app = express();
 
 app.use(express.static("public"));
 
@@ -11,7 +9,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
 
 require('dotenv').config()
 
@@ -20,22 +18,21 @@ app.engine("handlebars", exphbs({
 }));
 app.set("view engine", "handlebars");
 
-app.use(session({
-    secret: process.env.USER_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 2
-    }
-}))
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+});
 
-var routes = require("./controllers/controller.js");
+
+
+const routes = require("./controllers/controller.js");
 
 
 app.use(routes);
 
 
-var PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function () {
     console.log(`App now listening on port: ${PORT} view at: http://localhost:${PORT}`);

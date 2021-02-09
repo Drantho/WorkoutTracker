@@ -1,29 +1,21 @@
-const workouts = [
-    {
-        id: 1,
-        name: "Leg day",
-        complete: false,
-        date: "2021/2/7",
-        exercises: [
-            {
-                id: 1,
-                name: "squats",
-                type: "leg",
-                weight: 200,
-                sets: 3,
-                reps: 5,
-                duration: undefined
-            },{
-                id: 2,
-                name: "lunges",
-                type: "leg",
-                weight: 20,
-                sets: 3,
-                reps: 5,
-                duration: undefined
-            }
-        ]
-    }
-]
+const mongoose = require("mongoose");
 
-module.exports = workouts;
+const Schema = mongoose.Schema();
+
+const WorkoutSchema = new Schema({
+    name: String,
+    complete: Boolean,
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    exercises:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Exercise"
+        }]
+});
+
+const Workout = mongoose.model("Workout", WorkoutSchema)
+
+module.exports = Workout;
