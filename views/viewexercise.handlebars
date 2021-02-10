@@ -1,80 +1,63 @@
-{{json this.exercise}}
 <form action="/api/updateexercise" method="post">
-    <h1>
-        name:
-        <span>
-            {{exercise.name}}
-        </span>
-        <span>
-            <input type="text" name="name" value={{exercise.name}}>
-        </span>
-    </h1>
-    <p>
-        <span>
-            type:
-        </span>
-        <span>
-            {{exercise.type}}
-        </span>
-        <span>
-            <input type="text" name="type" value={{exercise.type}}>
-        </span>
-    </p>
-    <p>
-        <span>
-            weight:
-        </span>
-        <span>
-            {{exercise.weight}}
-        </span>
-        <span>
-            <input type="number" name="weight" value={{exercise.weight}}>
-        </span>
-    </p>
-    <p>
-        <span>
-            sets:
-        </span>
-        <span>
-            {{exercise.sets}}
-        </span>
-        <span>
-            <input type="number" name="sets" value={{exercise.sets}}>
-        </span>
-    </p>
-    <p>
-        <span>
-            reps:
-        </span>
-        <span>
-            {{exercise.reps}}
-        </span>
-        <span>
-            <input type="number" name="reps" value={{exercise.reps}}>
-        </span>
-    </p>
-    <p>
-        <span>
-            duration:
-        </span>
-        <span>
-            {{exercise.duration}}
-        </span>
-        <span>
-            <input type="number" name="duration" value={{exercise.duration}}>
-        </span>
-    </p>
-    <p>
-        <span>
-            Distance:
-        </span>
-        <span>
-            {{exercise.distance}}
-        </span>
-        <span>
-            <input type="number" name="distance" value={{exercise.distance}}>
-        </span>
-    </p>
-    <input type="hidden" name="_id" value={{exercise._id}}>
-    <button type="submit">Update Exercise</button>
+    <h2>Exercise: {{exercise.name}}</h2>
+    <span class="formContainer">
+        <p>
+            <label for="name">
+                name:
+            </label>  
+            <span>
+                <input type="text" name="name" value={{exercise.name}}>
+            </span>
+        </p>
+        <p>
+            <label>
+                type:
+            </label>
+            <span>
+                <input type="text" name="type" value={{exercise.type}}>
+            </span>
+        </p>
+        <p>
+            <label>
+                weight:
+            </label>
+            <span>
+                <input type="number" name="weight" value={{exercise.weight}}>
+            </span>
+        </p>
+        <p>
+            <label>
+                sets:
+            </label>
+            <span>
+                <input type="number" name="sets" value={{exercise.sets}}>
+            </span>
+        </p>
+        <p>
+            <label>
+                reps:
+            </label>
+            <span>
+                <input type="number" name="reps" value={{exercise.reps}}>
+            </span>
+        </p>
+        <p>
+            <label>
+                duration:
+            </label>
+            <span>
+                <input type="number" name="duration" value={{exercise.duration}}>
+            </span>
+        </p>
+        <p>
+            <span>
+                Distance:
+            </span>
+            <span>
+                <input type="number" name="distance" value={{exercise.distance}}>
+            </span>
+        </p>
+        <input type="hidden" name="_id" value={{exercise._id}}>
+        <button type="submit">Update Exercise</button>
+    </span>
 </form>

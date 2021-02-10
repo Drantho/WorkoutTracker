@@ -1,37 +1,46 @@
+<h2>Add Workout</h2>
+
 <form action="/api/workout" method="post">
+    <span class="formContainer">
 
-    <p>
-        <label for="name">Name</label>
-        <input type="text" name="name">
-    </p>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th></th>
-                <th>name</th>
-                <th>type</th>
-                <th>weight</th>
-                <th>sets</th>
-                <th>reps</th>
-                <th>duration</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each exercises}}
-            <tr>
-                <td>
-                    <input type="checkbox" name="exercises" value={{_id}}>
-                </td>
-                <td>{{name}}</td>
-                <td>{{type}}</td>
-                <td>{{weight}}</td>
-                <td>{{sets}}</td>
-                <td>{{reps}}</td>
-                <td>{{duration}}</td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    <button type="submit">Add Workout</button>
+        <p>
+            <label for="name">Workout Name</label>
+            <input type="text" name="name">
+        </p>
+        <h3p>
+            Exercises
+        </h3>
+        <p>
+            <a href="/addexercise">+ add new exercise</a>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>name</th>
+                    <th>type</th>
+                    <th>weight</th>
+                    <th>sets</th>
+                    <th>reps</th>
+                    <th>duration</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each exercises}}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="exercises" value={{_id}}>
+                    </td>
+                    <td>{{name}}</td>
+                    <td>{{type}}</td>
+                    <td>{{weight}}</td>
+                    <td>{{sets}}</td>
+                    <td>{{reps}}</td>
+                    <td>{{duration}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <button type="submit">Add Workout</button>
+    </span>
 </form>

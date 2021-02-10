@@ -6,6 +6,10 @@ const db = require("../models")
 router.get("/", (req,res) => {
     db.Exercise.find({}).lean().then(exercises => {
         db.Workout.find({}).populate("exercises").lean().then(workouts => {
+            workouts = workouts.map(workout => {
+                workout.date = formatDate(workout.date)
+                return workout
+            })
             res.render("index", {
                 exercises: exercises,
                 workouts: workouts

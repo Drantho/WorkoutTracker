@@ -1,43 +1,42 @@
 <form action="/api/updateworkout" method="post">
+    <h2>Workout: {{workout.name}}</h2>
+    <span class="formContainer">
+        <p>
+            <label for="name">name: </label>
+            <span id="workoutNameInput">
+                <input type="text" name="name" value="{{workout.name}}">
+            </span>
+        </p>
+        <p>
+            <label>
+                date:
+            </label>
+            <span>
+                <input type="date" name="date" value={{workout.date}}>
+            </span>
+        </p>
+        <p>
+            <span>
+                <input type="checkbox" name="complete" {{#if workout.complete}} checked {{/if}}> complete
+            </span>
+        </p>
+        <input type="hidden" name="_id" value={{workout._id}} id="workoutId">
+        <hr>
+        <p>
+            Exercises
+        </p>
+        {{#each exercises}}
+        <p>
+            <input type="checkbox" name="exercises" value={{_id}} id="{{_id}}"> {{name}}
+        </p>
+        {{/each}}
 
-<h1>
-    name:
-    <span id="workoutNameDisplay">
-        {{workout.name}}
+        <button type="submit">Update Workout</button>
     </span>
-    <span id="workoutNameInput">
-        <input type="text" name="name" value="{{workout.name}}">
-    </span>
-</h1>
-<p>
-    <span>
-        <input type="checkbox" name="complete" {{#if workout.complete}} checked {{/if}}> complete
-    </span>
-</p>
-<p>
-    <span>
-        Date:
-    </span>
-    <span>
-        {{workout.date}}
-    </span>
-    <span>
-        <input type="date" name="date" value={{workout.date}}>
-    </span>
-</p>
-<input type="hidden" name="_id" value={{workout._id}} id="workoutId">
-
-{{#each exercises}}
-<p>
-<input type="checkbox" name="exercises" value={{_id}} id="{{_id}}"> {{name}}
-</p>
-{{/each}}
-
-<button type="submit">Update Workout</button>
 </form>
 <script>
 
 
-fillChecks();
+    fillChecks();
 
 </script>

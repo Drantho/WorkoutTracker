@@ -31,7 +31,7 @@ const routes = require("./controllers/controller.js");
 app.use(routes);
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, function () {
     console.log(`App now listening on port: ${PORT} view at: http://localhost:${PORT}`);

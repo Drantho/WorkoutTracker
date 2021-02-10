@@ -4,7 +4,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: "Montserrat", "sans-serif" !important;
-    background-color: white;    
+    background-color: #eeeeee;    
 }
 
 header{
@@ -71,6 +71,10 @@ h3 a{
     color: white;
 }
 
+p a{
+    color: white;
+}
+
 .formContainer{
     border-radius: 8px;
     border: 2px solid white;
@@ -79,18 +83,15 @@ h3 a{
     position: relative;
 }
 
-.formContainer input{
-    position: absolute;
-    right: 50px;
-}
-
 .formContainer label{
     margin-right: 200px;
     position: relative;
     top: 2px;
 }
 
-.formContainer input[type=text], .formContainer input[type=number] {
+.formContainer input[type=text], .formContainer input[type=number], .formContainer input[type=date] {
+    position: absolute;
+    right: 50px;
     padding: 5px;
     border-radius: 5px;    
 }
@@ -108,4 +109,10 @@ button{
     font-family: "Montserrat", "sans-serif" !important;
     margin: 15px 0 0 0;
     font-weight: 900;
+}
+
+td, th{
+    padding: 12px 20px;
+    border: 0.5px solid white;
+    margin: 0;
 }
