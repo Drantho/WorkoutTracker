@@ -1,8 +1,9 @@
+// require needed 
 const express = require("express");
 const router = express.Router();
-
 const db = require("../models")
 
+// home route
 router.get("/", (req,res) => {
     db.Exercise.find({}).lean().then(exercises => {
         db.Workout.find({}).populate("exercises").lean().then(workouts => {
@@ -18,22 +19,26 @@ router.get("/", (req,res) => {
     })
 });
 
+// add exercise view
 router.get("/addexercise", (req, res) => {
     res.render("addexercise");
 });
 
+// add workout view
 router.get("/addworkout", (req, res) => {        
     db.Exercise.find({}).lean().then(data => {
         res.render("addworkout", {exercises: data});
     })
 });
 
+// view/update exercise view
 router.get("/exercise/:id", (req, res) => {
     db.Exercise.findById(req.params.id).lean().then(exercise => {
         res.render("viewexercise", {exercise: exercise});
     })
 })
 
+// view/update workout view
 router.get("/workout/:id", (req, res) => {
     db.Workout.findById(req.params.id).populate("Exercise").lean().then(workout => {
         workout.date = formatDate(workout.date)
@@ -46,30 +51,35 @@ router.get("/workout/:id", (req, res) => {
     })
 })
 
+// get workout json
 router.get("/api/workout/:id", (req, res) => {
     db.Workout.findById(req.params.id).populate("Exercise").lean().then(data => {
         res.json(data)
     })
 })
 
+// create workout
 router.post("/api/workout", (req, res) => {
     db.Workout.create(req.body).then(data => {
         res.redirect("/");
     })    
 });
 
+// create exercise
 router.post("/api/exercise", (req, res) => {
     db.Exercise.create(req.body).then(data => {
         res.redirect("/")
     })    
 });
 
+// update exercise
 router.put("/api/exercise/:id", (req, res) => {
     db.Exercise.updateOne({_id: req.params.id}, req.body).then(data => {
         res.redirect("/");
     })    
 });
 
+// update exercise
 router.post("/api/updateexercise", (req, res) => {
 
     const exercise = req.body;
@@ -83,6 +93,7 @@ router.post("/api/updateexercise", (req, res) => {
     })    
 });
 
+// update workout
 router.post("/api/updateworkout", (req, res) => {
 
     console.log(req.body);
@@ -96,18 +107,21 @@ router.post("/api/updateworkout", (req, res) => {
     })    
 });
 
+// set workout complete
 router.put("/api/setcomplete/workout/:workoutid", (req, res) => {
     db.Workout.updateOne({_id: req.params.id}, {complete: true}).then(data => {
         res.redirect("/");
     }) 
 });
 
+// set workout incomplete
 router.put("/api/setincomplete/workout/:workoutid", (req, res) => {
     db.Workout.updateOne({_id: req.params.id}, {complete: false}).then(data => {
         res.redirect("/");
     }) 
 });
 
+// format dates for text inputs
 function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),

@@ -5,7 +5,6 @@ const app = express();
 
 app.use(express.static("public"));
 
-
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
@@ -27,9 +26,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 const routes = require("./controllers/controller.js");
 
-
 app.use(routes);
-
 
 const PORT = process.env.PORT || 8080;
 

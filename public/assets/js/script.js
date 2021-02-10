@@ -1,7 +1,7 @@
 const workoutNameDisplay = $("#workoutNameDisplay");
 const workoutNameInput = $("#workoutNameInput");
 
-
+// get exercises and fill checkboxes
 const fillChecks = () => {
     const workoutId = $("#workoutId").val();
     $.ajax({
